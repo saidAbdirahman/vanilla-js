@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Currencies</title>
+</head>
+<body>
+    <script>
+        // Define the API endpoint
+        const apiUrl = 'https://api.coinbase.com/v2/currencies';
+
+        // Function to fetch and handle currency data
+        async function fetchCurrencies() {
+          try {
+            // Make a GET request to the API
+            const response = await fetch(apiUrl);
+            
+            // Check if the response is ok (status code 200)
+            if (!response.ok) {
+              throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            
+            // Parse the JSON data from the response
+            const data = await response.json();
+            
+            // Log the data to the console
+            console.log(data);
+          } catch (error) {
+            // Handle any errors that occurred during the fetch operation
+            console.error('Error fetching currency data:', error);
+          }
+        }
+
+        // Call the function to fetch and display currencies
+        fetchCurrencies();
+    </script>
+</body>
+</html>
